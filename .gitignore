@@ -1,0 +1,36 @@
+# Scratch / practice notebooks
+/notebooks/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Model checkpoints / large artifacts
+*.pt
+*.pth
+*.ckpt
+*.bin
+
+# Secrets
+.env
+.env.*
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

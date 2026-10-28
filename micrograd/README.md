@@ -5,12 +5,12 @@ Lecture 1 of Andrej Karpathy's Neural Networks: Zero to Hero series,
 I rebuilt the scalar autograd engine and the small neural net library from the video, then
 trained the net on a real dataset.
 
+
 `engine.py` holds `Value`, a scalar that records how it was computed and backpropagates
-through `+`, `*`, `-`, `/`, `**` and `tanh`. `nn.py` builds `Neuron`, `Layer` and `MLP` on top
-of it. In `data/`, `data.ipynb` downloads the dataset, shuffles it, splits it 80/20 and
-normalizes the features with the training set's mean and std, then saves the result (with the
-means and stds) to `banknote_split.json`. `demo.ipynb` trains the network and checks it against
-the test set.
+through various operations.
+
+It builds `Neuron`, `Layer` and `MLP` on top
+of it. 
 
 ## Demo: spotting forged banknotes
 
@@ -18,13 +18,14 @@ The [UCI Banknote Authentication dataset](https://archive.ics.uci.edu/dataset/26
 has 1,372 notes labeled genuine or forged. Each note has 4 features taken from an image of it:
 wavelet variance, skewness, kurtosis and entropy.
 
-The model is `MLP(4, [8, 8, 1])` with tanh activations, and the labels are encoded as -1 and +1
-to match tanh's range. I trained it on 1,098 notes for 500 SGD steps, each on a random batch of
+The model is `MLP(4, [8, 8, 1])` with tanh activations, and the labels are encoded as -1 and +1 to match tanh's range. I trained it on 1,098 notes for 500 SGD steps, each on a random batch of
 32 with a learning rate of 0.03, minimizing the sum of squared errors. It got all 274 test notes
 right.
 
 The two classes are almost linearly separable, so a perfect score on this data is expected
-from a small net. All of the gradients come from `engine.py`; PyTorch isn't used.
+from a small net. All of the gradients come from `engine.py`; 
+
+PyTorch isn't used.
 
 ## Running it
 
